@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            <div v-if=" age >= 70">打太极</div>
+            <div v-else-if=" age >= 50">广场舞</div>
+            <div v-else-if=" age >= 18">蹦迪</div>
+            <div v-else>打王者</div>
+        </div>
+
+        <script src="./文件/vue.js"></script>
+        <script>
+            const vm = new Vue({
+                el: '#app',
+                data: {
+                    msg: 'hello vue',
+                    age : 44
+                }
+            })
+        </script>
+    </body>
+</html>

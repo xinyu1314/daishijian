@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            <img v-bind:src="imgSrc" v-bind:title="info" v-bind:aa="bb" alt="">
+            <img :src="imgSrc" :title="info" :aa="bb" alt="">
+        </div>
+
+        <script src="./文件/vue.js"></script>
+        <script>
+            const vm = new Vue({
+                el: '#app',
+                data: {
+                    msg: 'hello vue',
+                    imgSrc : "./文件/01.jpg",
+                    info : "这儿是一张美女图片",
+                    bb : "内容"
+                }
+            })
+        </script>
+    </body>
+</html>

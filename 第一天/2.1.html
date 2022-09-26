@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main">
+        <div id="box">
+            <h1>{{ msg }}</h1>
+        </div>
+        <div id="box2">
+            <h2>{{ msg }}</h2>
+        </div>
+    </div>
+    <script src="./文件/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el : "#main",
+            data : {
+                msg : "嘿嘿",
+                count : 100,
+                car : "宝马"
+            }
+        })
+        console.log(vm.msg);
+        console.log(vm.count);
+    </script>
+</body>
+</html>

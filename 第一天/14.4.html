@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            <ul>
+                <li v-for="item in students" :key="item.id">姓名：{{ item.name }}, 年纪：{{ item.age }}, 描述：{{ item.desc }}</li>
+            </ul>
+        </div>
+
+        <script src="./文件/vue.js"></script>
+        <script>
+            const vm = new Vue({
+                el: '#app',
+                data: {
+                    students : [
+                        {id : 1 , name : "小红", age : 20, desc : "很好学"},
+                        {id : 2 , name : "老蓝", age : 70, desc : "打牌"} 
+                    ]
+                }
+            })
+        </script>
+    </body>
+</html>
