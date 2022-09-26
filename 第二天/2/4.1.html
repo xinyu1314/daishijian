@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{ msg }}</p>
+        <!-- 设置text的值，覆盖掉后面value的值 -->
+        <input type="text" v-model="msg" value="123456">
+        <hr>
+        <p>{{ desc }}</p>
+        <!-- 设置textarea的值 -->
+        <textarea v-model="desc"></textarea>
+        <hr>
+        <!-- select中的value值, 就是option的value值 -->
+        <p>{{ hobbyId }}</p>
+        <select v-model="hobbyId">
+            <option value="1">吃饭</option>
+            <option value="2">睡觉</option>
+            <option value="3">上厕所</option>
+        </select>
+        <hr>
+        <!-- 控制checked属性 -->
+        <input type="checkbox" v-model="isSingle" checked>是否单身
+    </div>
+
+    <script src="./文件/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello vue',
+                desc : "哈哈",
+                hobbyId : 3,
+                isSingle : false 
+            }
+        })
+    </script>
+</body>
+</html>

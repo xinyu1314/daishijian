@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            <!-- 将div的样式变成styleObj中的样式 -->
+            <div style="width : 200px ; height : 100px ; background-color : blue;" :style="styleObj" ></div>
+            <!-- 将div的样式变成:style中的样式 -->
+            <div style="width : 200px ; height : 100px ; background-color : blue;" :style="{ width : '400px', height : '400px', backgroundColor : 'pink' }"></div>
+        </div>
+
+        <script src="./文件/vue.js"></script>
+        <script>
+            const vm = new Vue({
+                el: '#app',
+                data: {
+                    msg: 'hello vue',
+                    styleObj : {
+                        width : "400px",
+                        height : "400px",
+                        backgroundColor : "blue"
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

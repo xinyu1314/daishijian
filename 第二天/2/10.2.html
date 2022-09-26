@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text">
+        <input type="text">
+        <!-- 增加自定义指令属性 -->
+        <input type="text" v-focus>
+        <input type="text">
+        <input type="text">
+    </div>
+    <script src="./文件/vue.js"></script>
+    <script>
+        // 定义一个自定义指令
+        Vue.directive ("focus", {
+            // 指令所在的元素, 被插入到页面中时执行
+            inserted (el) {
+                // 元素调用foucus
+                el.focus();
+            }
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello vue'
+            }
+        })
+    </script>
+</body>
+</html>

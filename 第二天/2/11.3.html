@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text">
+        <input type="text">
+        <!-- 添加全局自定义指令属性 -->
+        <input type="text" v-focus>
+        <input type="text">
+        <!-- 添加局部指令属性 -->
+        <input type="text" v-red>
+        <hr>
+        <!-- 添加局部自定义指令属性 -->
+        <p v-red>我是p标签</p>
+    </div>
+    <script src="./文件/vue.js"></script>
+    <script>
+        // 定义全局自定义指令
+        Vue.directive ("focus", {
+            // 指令所在的元素, 被插入到页面中时执行
+            inserted (el) {
+                // 调用
+                el.focus();
+            }
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello vue'
+            },
+            directives: {
+                // 定义一个局部自定义指令  
+                red : {
+                    inserted (el) {
+                        // 改变元素样式
+                        el.style.color = "red";
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

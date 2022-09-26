@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 在输入框内输入msg中的值 -->
+        <input type="text" v-model="msg">
+        <hr>
+        <!-- 设置表单元素的value值 -->
+        用户名: <input type="text" v-model="username"><br><br>
+        <!-- 设置表单元素的value值 -->
+        密码: <input type="password" v-model="password"><br><br>
+        <button>登录</button>
+    </div>
+
+    <script src="./文件/vue.js"></script>
+    <script>
+      const vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'hello vue',
+            username : "1",
+            password : "1"
+        }
+      })
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            <!-- a标签注册点击事件，执行fn1，传参 -->
+            <a @click="fn1(100, $event)" href="http://www.baidu.com">去百度</a>
+            <div @click="father">
+                <!-- 阻止事件冒泡和默认行为 -->
+                <a @click.stop.prevent="fn2(100)" href="http://www.baidu.com">去百度2</a>
+            </div>
+        </div>
+
+        <script src="./文件/vue.js"></script>
+        <script>
+            const vm = new Vue({
+                el: '#app',
+                data: {
+                    msg: 'hello vue'
+                },
+                methods : {
+                    fn1 (number, e) {
+                        // 阻止默认行为
+                        e.preventDefault();
+                    },
+                    fn2 (number) {
+                        alert("我是子盒子，我被点击了");
+                    },
+                    father () {
+                        alert("我是父盒子，我被点击了");
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

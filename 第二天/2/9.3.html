@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+<body>
+    <!-- 调用global过滤器与demo过滤器 -->
+    <div id="app">{{ msg | global | demo }}</div>
+    <div id="app2">{{ msg | global | demo }}</div>
+    <script src="./文件/vue.js"></script>
+    <script>
+        // 定义一个过滤器global
+        Vue.filter("global", function (value) {
+            // 加一个_global并返回
+            return value + "_global";
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello vue'
+            },
+            filters: {
+                // 定义一个局部过滤器
+                demo : function (value) {
+                    // 加一个_demo并返回
+                    return value + "_demo";
+                }
+            }
+        })
+        const vm2 = new Vue({
+            el: '#app2',
+            data: {
+            msg: "hello vue2"
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- data1调用time过滤器 -->
+        <h1>{{ date1 | time }}</h1>
+        <!-- data2调用time过滤器并传参 -->
+        <h1>{{ date2 | time("YYYY年MM月DD日") }}</h1>
+    </div>
+    <script src="./文件/moment.js"></script>
+    <script src="./文件/vue.js"></script>
+    <script>
+        // 定义time过滤器,没传参就默认为str，传参就处理值
+        Vue.filter("time", function (value, str = "YYYY年MM月DD日 HH:mm:ss") {
+            // 处理并返回str
+            return moment(value).format(str);
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                date1: 1202572575835,
+                date2: 1595712933419
+            }
+        })
+    </script>
+</body>
+</html>

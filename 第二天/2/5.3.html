@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 将输入的文字两侧的空格去掉 -->
+        <input type="text" v-model.trim="msg"> {{ msg }} <br><br>
+        <!-- 将输入的非数字转换为数字 -->
+        <input type="text" v-model.number="num"> {{ num }} <br><br>
+    </div>
+
+    <script src="./文件/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello vue',
+                num : 30
+            }
+        })
+    </script>
+</body>
+</html>

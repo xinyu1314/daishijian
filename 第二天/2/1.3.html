@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+        .base {
+          width: 200px;
+          height: 100px;
+          background-color: skyblue;
+          margin: 10px;
+        }
+        .pink {
+          background-color: pink;
+        }
+        .big {
+          width: 300px;
+          height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 将div的样式变为obj中的样式 -->
+        <div class="base" :class="obj">{{ msg }}</div>
+        <!-- 将div的样式变为数组中的样式 -->
+        <div class="base" :class="arr">{{ msg }}</div>
+        <!-- 盒子为粉色，但是不变大 -->
+        <div class="base" :class="{ pink : isPink, big : isBig }">{{ msg }}</div>
+    </div>
+
+    <script src="./文件/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello vue',
+                obj : {
+                  pink : true,
+                  big : true
+                },
+                arr : ["pink", "big"],
+                isPink : true,
+                isBig : false
+            }
+        })
+    </script>
+</body>
+</html>
