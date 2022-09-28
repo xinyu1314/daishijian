@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+    #app {
+      width: 400px;
+      height: 400px;
+      background-color: pink;
+    }
+  
+    .son {
+      width: 300px;
+      height: 200px;
+      background-color: skyblue;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <son :money="money" desc="abc"></son>
+    </div>
+    <script src="./文件/vue.js"></script>
+    <script>
+        // 定义全局组件
+        Vue.component("son", {
+            template : `
+                <div class="son">
+                    <h3>我是子组件</h3>
+                    <p>传过来的数据: {{ money }} - {{ desc }}</p>
+                    <p>自己的数据: {{ msg }}</p>
+                    <button @click="fn">改值</button>
+                </div>
+            `,
+            // 执行data函数
+            data () {
+                return {
+                    msg : "2"
+                }
+            },
+            methods : {
+                // 执行fn
+                fn () {
+                    this.money = 100
+                }     
+            },
+            // 接收父组件的数据
+            props : ["money", "desc"],
+      })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello vue',
+                money: 10000
+            }
+        })
+    </script>
+</body>
+</html>

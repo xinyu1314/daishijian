@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+    .search {
+      width: 250px; 
+      margin: 20px 0;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <!-- 搜索 -->
+            <input type="text" class="form-control search" placeholder="输入关键字进行搜索">
+            <!-- 表格 -->
+            <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>资产名称</th>
+                    <th>资产价格</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td><a href="javascript:;">删除</a></td>
+                </tr>
+            </tbody>
+            </table>
+            <!-- 添加资产 -->			
+            <form class="form-inline">
+                <input type="text" class="form-control" placeholder="资产名称">
+                &nbsp;&nbsp;
+                <input type="text" class="form-control" placeholder="资产价格">
+                &nbsp;&nbsp;
+                <button class="btn btn-primary">添加资产</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

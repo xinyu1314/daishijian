@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            <demo></demo>
+            <demo></demo>
+            <demo></demo>
+        </div>
+
+        <script src="./文件/vue.js"></script>
+        <script>
+            // 定义全局组件
+            Vue.component("demo", {
+                template : `
+                    <div>
+                    <div>我是demo组件 - {{ count }}</div>
+                    <button @click="fn">按钮</button>
+                    </div>
+                `,
+                // 执行data函数, 将data函数的返回值, 作为该实例的数据
+                data : function() {
+                    // 返回数据
+                    return {
+                        count: 0
+                    }
+                },
+                methods : {
+                    // 执行函数
+                    fn () {
+                      this.count++
+                    }
+                }
+            })
+            const vm = new Vue({
+                el: '#app',
+                data: {
+                    msg: 'hello vue'
+                }
+            })
+        </script>
+    </body>
+</html>

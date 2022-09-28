@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+    #app {
+      width: 400px;
+      height: 400px;
+      background-color: pink;
+    }
+  
+    .son {
+      width: 300px;
+      height: 200px;
+      background-color: orange;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <son house="新疆海景大别墅" car="宝马车" :money="money" desc="abc"></son>
+    </div>
+    <script src="./文件/vue.js"></script>
+    <script>
+        // 定义一个全局组件
+        Vue.component("son", {
+            template : `
+                <div class="son">
+                    <h3>我是子组件</h3>
+                    <p>传过来的数据: {{ house }} - {{ car }} - {{ money }} - {{ desc }}</p>
+                </div>
+            `,
+            // 接收父组件的数据
+            props : ["house", "car", "money", "desc"],
+      })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello vue',
+                money: 10000
+            }
+        })
+    </script>
+</body>
+</html>

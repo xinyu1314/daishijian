@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+    .red {
+      color: red;
+    }
+    .search {
+      width: 300px;
+      margin: 20px 0;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <!-- 输入框 -->
+            <!-- 添加自定义指令autofoucus -->
+            <input v-model.trim="key" v-autofocus type="text" class="form-control search" placeholder="请输入搜索关键字">
+            <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>资产名称</th>
+                    <th>价格</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 遍历数组 -->
+                <tr v-for="(item, index) in showList" :key="item.id">
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ item.name }}</td>
+                    <!-- 如果当前下标的价格大于等于100，就加上red类。然后价格调用money过滤器 -->
+                    <td :class="{ red: item.price >= 100 }">{{ item.price | money }}</td>
+                    <!-- 注册点击事件，进行删除功能 -->
+                    <td><a @click="del(item.id)" href="javascript:;">删除</a></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <!-- 合并四格，调用money -->
+                <tr><td colspan="4">资产总价: {{ total | money }}</td></tr>
+            </tfoot>
+            </table>
+            <!-- 添加资产 -->
+            <form class="form-inline">
+                <div class="form-group">
+                    <!-- 将输入的物资名称去掉两侧的空格 -->
+                    <div class="input-group"><input v-model.trim="name" type="text" class="form-control" placeholder="资产名称" /></div>
+                    &nbsp;&nbsp;
+                    <!-- 将输入的资产价格变换为数字并去掉两侧空格 -->
+                    <div class="input-group"><input v-model.trim.number="price" type="text" class="form-control" placeholder="资产价格" /></div>
+                </div>
+                &nbsp;&nbsp;
+                <!-- 按钮注册点击事件并且阻止默认提交行为 -->
+                <button @click.prevent="add" class="btn btn-primary">添加资产</button>
+            </form>
+        </div>
+    </div>
+    <script src="./文件/vue.js"></script>
+    <script>
+        // 定义一个过滤器, 专门用于处理金额
+        Vue.filter("money", function (value) {
+            // 价格前加上一个￥并保留两位小数，返回
+            return "¥" + (+value).toFixed(2);
+        })
+
+        // 定义一个自定义指令
+        Vue.directive("autofocus", {
+            // 指令所在的元素, 被插入到页面中时执行inserted
+            inserted (el) {
+                el.focus();
+            }
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                list: [
+                    { id: 3, name: '外套', price: 99 },
+                    { id: 7, name: '裤子', price: 34 },
+                    { id: 11, name: '鞋子', price: 300 },
+                    { id: 25, name: '头发', price: 199 }
+                ],
+                name: '',
+                price: 0,
+                key: ''
+            },
+            methods: {
+                del (id) {
+                    // 删除这一行
+                    this.list = this.list.filter(item => item.id !== id);
+                },
+                add () {
+                    // 如果输入物资名称为空，就返回
+                    if (this.name === "") {
+                        return;
+                    }
+                    // 如果价格为空或者小于等于0，就返回
+                    if (this.price === "" || this.price <= 0) {
+                        return;
+                    }
+                    // 添加
+                    this.list.push({
+                        id: +new Date(),
+                        name: this.name,
+                        price: this.price
+                    })
+                    // 清空物资名称与价格
+                    this.name = '';
+                    this.price = 0;
+                }
+            },
+            // 计算属性
+            computed : {
+                total () {
+                    // 计算总价
+                    // var totalPrice = 0;
+                    let totalPrice = 0;
+                    // 所有物资的价格进行累加，
+                    // this.showList.for(item => totalPrice += item.price);
+                    this.showList.forEach(item => totalPrice += item.price);
+                    // 返回总价
+                    return totalPrice;
+                },
+                // 过滤出展示的数组
+                showList () {
+                    // 定义一个过滤器
+                    const arr = this.list.filter(item => {
+                        // 如果物资名称包括key
+                        if (item.name.includes(this.key)) {
+                            // 展示保留该项
+                            return true;
+                        } else {
+                            // 否则就不保留该项
+                            return false;
+                        }
+                    })
+                    // 返回数组
+                    return arr;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
